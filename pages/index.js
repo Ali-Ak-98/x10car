@@ -22,6 +22,7 @@ export default function Home(props) {
                 'Authorization': 'Basic ' + Buffer.from('6db07fd5272a431483ff1ed3c530911a:').toString('base64'),
                 'Content-Type': 'application/json'
             },
+            timeout: 20000000000,
         };
 
         const res = await axios.post(url, data, options);
