@@ -3,28 +3,30 @@ import styles from '../styles/Home.module.css'
 import axios from "axios";
 
 export async function getServerSideProps(context) {
-    const url = 'autoextract.scrapinghub.com/v1/extract'
-    const data = {
-        'url': 'https://allegro.pl/uzytkownik/bula_lukasz/lampy-przednie-i-elementy-lampy-przednie-255099?bmatch=cl-e2101-d3794-c3683-aut-1-2-0412',
-        'pageType': 'productList',
-    };
-    const options = {
-        headers: {
-            'Authorization': 'Basic ' + Buffer.from('6db07fd5272a431483ff1ed3c530911a:').toString('base64'),
-            'Content-Type': 'application/json'
-        },
-    };
-
-    const res = await axios.post(url, data, options);
-    console.log(res);
-
     return {
-        props: {data:res.data}, // will be passed to the page component as props
+        props: {data: 'testData'}, // will be passed to the page component as props
     }
 }
 
 export default function Home(props) {
-    console.log(props);
+    console.log(props)
+
+    const test = async () => {
+        const url = 'https://autoextract.scrapinghub.com/v1/extract';
+        const data = {
+            'url': 'https://allegro.pl/uzytkownik/bula_lukasz/lampy-przednie-i-elementy-lampy-przednie-255099?bmatch=cl-e2101-d3794-c3683-aut-1-2-0412',
+            'pageType': 'productList',
+        };
+        const options = {
+            headers: {
+                'Authorization': 'Basic ' + Buffer.from('6db07fd5272a431483ff1ed3c530911a:').toString('base64'),
+                'Content-Type': 'application/json'
+            },
+        };
+
+        const res = await axios.post(url, data, options);
+        console.log(res.data);
+    }
     return (
         <div className={styles.container}>
             <Head>
@@ -33,7 +35,7 @@ export default function Home(props) {
             </Head>
 
             <main className={styles.main}>
-                <h1 className={styles.title}>
+                <h1 className={styles.title} onClick={test}>
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
                 </h1>
 
