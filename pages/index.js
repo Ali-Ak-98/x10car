@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css'
 import axios from "axios";
 
 export async function getServerSideProps(context) {
-
     const url = 'https://autoextract.scrapinghub.com/v1/extract';
     const data = {
         'url': 'https://allegro.pl/uzytkownik/bula_lukasz/lampy-przednie-i-elementy-lampy-przednie-255099?bmatch=cl-e2101-d3794-c3683-aut-1-2-0412',
@@ -28,34 +27,20 @@ export default function Home(props) {
     console.log(props);
 
     const test = async () => {
-        const https = require('https');
-
-        const data = JSON.stringify([{
+        const url = 'https://autoextract.scrapinghub.com/v1/extract';
+        const data = {
             'url': 'https://allegro.pl/uzytkownik/bula_lukasz/lampy-przednie-i-elementy-lampy-przednie-255099?bmatch=cl-e2101-d3794-c3683-aut-1-2-0412',
             'pageType': 'productList',
-        }]);
-        const options = {
-            host: 'autoextract.scrapinghub.com',
-            path: '/v1/extract',
+        };
+
+        const response = await fetch(url, {
+            method: 'POST',
             headers: {
                 'Authorization': 'Basic ' + Buffer.from('6db07fd5272a431483ff1ed3c530911a:').toString('base64'),
-                'Content-Type': 'application/json',
-                'Content-Length': data.length
+                'Content-Type': 'application/json'
             },
-            method: 'POST',
-        };
-        const req = https.request(options, res => {
-            console.log(`statusCode: ${res.statusCode}`);
-            res.on('data', d => {
-                process.stdout.write(d);
-                console.log(d);
-            });
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
-        req.on('error', error => {
-            console.error(error);
-        });
-        req.write(data);
-        req.end();
 
     }
 
