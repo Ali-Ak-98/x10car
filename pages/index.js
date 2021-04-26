@@ -5,7 +5,7 @@ import axios from "axios";
 export async function getServerSideProps(context) {
     const url = 'https://autoextract.scrapinghub.com/v1/extract'
     const data = [{
-        'url': 'https://allegro.pl/oferta/bixenon-audi-q3-nieskretne-xenony-audi-q3-xenon-10645150905',
+        'url': 'https://allegro.pl/oferta/bixenon-audi-q3-nieskretne-xenony-audi-q3-xenon-10645150905#aboutSeller',
         'pageType': 'product',
     }];
     const options = {
