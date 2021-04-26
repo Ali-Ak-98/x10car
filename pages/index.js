@@ -5,8 +5,8 @@ import axios from "axios";
 export async function getServerSideProps(context) {
     const url = 'https://autoextract.scrapinghub.com/v1/extract'
     const data = [{
-        'url': 'https://allegro.pl/uzytkownik/bula_lukasz/lampy-przednie-i-elementy-lampy-przednie-255099?bmatch=cl-e2101-d3794-c3683-aut-1-2-0412',
-        'pageType': 'productList',
+        'url': 'https://allegro.pl/oferta/bixenon-audi-q3-nieskretne-xenony-audi-q3-xenon-10645150905',
+        'pageType': 'product',
     }];
     const options = {
         headers: {
