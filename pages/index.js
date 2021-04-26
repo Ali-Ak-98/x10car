@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
         console.error(error);
     });
     req.write(data);
-    req.end();
+    await req.end();
     return {
         props: {data: JSON.stringify(resData)}, // will be passed to the page component as props
     }
